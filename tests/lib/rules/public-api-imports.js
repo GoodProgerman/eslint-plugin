@@ -16,10 +16,11 @@ const rule = require("../../../lib/rules/public-api-imports"),
 // Tests
 //------------------------------------------------------------------------------
 
-const aliasOptions = [
-	{
-		alias: '@'
-	}
+const options = [
+   {
+      alias: '@',
+      testFilesPatterns: ['**/*.test.*', '**/*.StoreDecorator.ts', '**/*.stories.ts',]
+   }
 ]
 
 const ruleTester = new RuleTester({
@@ -34,8 +35,15 @@ ruleTester.run("public-api-imports", rule, {
       {
          code: "import { AddNewComment } from '@/entities/Article'",
          errors: [],
-			options: aliasOptions
+         options: options
       },
+		// ===
+		{
+			filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.test.tsx',
+			code: "import { AddNewComment } from '@/entities/Article/testing'",
+			errors: [],
+			options: options
+		},
      ],
    
      invalid: [
@@ -46,7 +54,14 @@ ruleTester.run("public-api-imports", rule, {
       {
         code: "import { AddNewComment } from '@/entities/Article/AddNewComment/components/AddNewComment'",
         errors: [{ message: "Абсолютный импорт возможен лишь только через Public API"}],
-        options: aliasOptions
+        options: options
+      },
+		// ====
+      {
+        filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.tsx',
+        code: "import { AddNewComment } from '@/entities/Article/testing'",
+        errors: [{ message: "Тестовые данные необходимо импортировать из Testing Public API"}],
+        options: options
       },
      ],
 });
