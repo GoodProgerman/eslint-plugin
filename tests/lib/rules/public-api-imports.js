@@ -37,31 +37,34 @@ ruleTester.run("public-api-imports", rule, {
          errors: [],
          options: options
       },
-		// ===
-		{
-			filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.test.tsx',
-			code: "import { AddNewComment } from '@/entities/Article/testing'",
-			errors: [],
-			options: options
-		},
+      // ===
+      {
+         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.test.tsx',
+         code: "import { AddNewComment } from '@/entities/Article/testing'",
+         errors: [],
+         options: options
+      },
      ],
    
      invalid: [
       {
         code: "import { AddNewComment } from 'entities/Article/AddNewComment/components/AddNewComment'",
-        errors: [{ message: "Абсолютный импорт возможен лишь только через Public API"}],
+        errors: [{ messageId: "publicApiImports"}],
+        output: "import { AddNewComment } from 'entities/Article'"
       },
       {
         code: "import { AddNewComment } from '@/entities/Article/AddNewComment/components/AddNewComment'",
-        errors: [{ message: "Абсолютный импорт возможен лишь только через Public API"}],
-        options: options
+        errors: [{ messageId: "publicApiImports"}],
+        options: options,
+        output: "import { AddNewComment } from '@/entities/Article'"
       },
-		// ====
+      // ====================
       {
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.tsx',
         code: "import { AddNewComment } from '@/entities/Article/testing'",
-        errors: [{ message: "Тестовые данные необходимо импортировать из Testing Public API"}],
-        options: options
+        errors: [{ messageId: "testingPublicApiImports"}],
+        options: options,
+        output: null
       },
      ],
 });
