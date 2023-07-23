@@ -29,20 +29,20 @@ const ruleTester = new RuleTester({
 ruleTester.run("public-api-imports", rule, {
    valid: [
       {
-			// Путь относительный
+         // Путь относительный
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.tsx',
          code: "import { AddNewComment } from '../../AddNewComment/components/AddNewComment'",
          errors: [],
       },
       {
-			// should be relative
+         // should be relative
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.tsx',
          code: "import { AddNewComment } from '@/entities/Article'",
          errors: [],
          options: options
       },
       {
-			// Верхний слой импортрует нижний через Public API
+         // Верхний слой импортрует нижний через Public API
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\features\\Article/ArticleDetails.tsx',
          code: "import { AddNewComment } from '@/entities/Article'",
          errors: [],
@@ -50,7 +50,7 @@ ruleTester.run("public-api-imports", rule, {
       },
       // ===
       {
-			// should be relative
+         // should be relative
          filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.test.tsx',
          code: "import { AddNewComment } from '@/entities/Article/testing'",
          errors: [],
@@ -64,17 +64,19 @@ ruleTester.run("public-api-imports", rule, {
       },
      ],
    
+
+     
      invalid: [
       {
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\features\\Article/ArticleDetails.tsx',
         code: "import { AddNewComment } from 'entities/Article/AddNewComment/components/AddNewComment'",
-        errors: [{ messageId: "publicApiImports"}],
+        errors: [{ messageId: "necessaryPublicApiImport"}],
         output: "import { AddNewComment } from 'entities/Article'"
       },
       {
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\features\\Article/ArticleDetails.tsx',
         code: "import { AddNewComment } from '@/entities/Article/AddNewComment/components/AddNewComment'",
-        errors: [{ messageId: "publicApiImports"}],
+        errors: [{ messageId: "necessaryPublicApiImport"}],
         options: options,
         output: "import { AddNewComment } from '@/entities/Article'"
       },
@@ -82,7 +84,14 @@ ruleTester.run("public-api-imports", rule, {
       {
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\features\\Article/ArticleDetails.tsx',
         code: "import { AddNewComment } from '@/entities/Article/testing'",
-        errors: [{ messageId: "testingPublicApiImports"}],
+        errors: [{ messageId: "forbiddenToImportFromTestingPublicApi"}],
+        options: options,
+        output: null
+      },
+      {
+        filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\features\\Article/ArticleDetails.test.tsx',
+        code: "import { AddNewComment } from '@/entities/Article'",
+        errors: [{ messageId: "necessaryImportFromTestingPublicApi"}],
         options: options,
         output: null
       },
