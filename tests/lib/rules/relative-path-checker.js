@@ -30,19 +30,21 @@ ruleTester.run("relative-path-checker", rule, {
 
   invalid: [
     {
-		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article',
-      code: "import { AddNewComment } from 'entities/Article/AddNewComment/components/AddNewComment'",
+		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/components/AddNewComment/AddNewComment.tsx',
+      code: "import { articleSlice } from 'entities/Article/model/slice/articleSlice'",
       errors: [{ messageId: "pathInSameSlice"}],
+		output: "import { articleSlice } from '../../model/slice/articleSlice'"
     },
     {
-		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article',
-      code: "import { AddNewComment } from '@/entities/Article/AddNewComment/components/AddNewComment'",
+		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/components/AddNewComment/AddNewComment.tsx',
+      code: "import { articleSlice } from '@/entities/Article/model/slice/articleSlice'",
       errors: [{ messageId: "pathInSameSlice"}],
+		output: "import { articleSlice } from '../../model/slice/articleSlice'",
 		options: [
 			{
 				alias: '@'
 			}
-		]
+		],
     },
   ],
 });
