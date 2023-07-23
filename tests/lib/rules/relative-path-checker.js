@@ -46,5 +46,16 @@ ruleTester.run("relative-path-checker", rule, {
 			}
 		],
     },
+    {
+		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/components/AddNewComment/AddNewComment.tsx',
+      code: "import { articleSlice } from '../../shared/Modal/Modal'",
+      errors: [{ messageId: "relativePathBetweenLayers"}],
+		output: null,
+		options: [
+			{
+				alias: '@'
+			}
+		],
+    },
   ],
 });
