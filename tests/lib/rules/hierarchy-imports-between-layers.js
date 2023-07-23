@@ -88,7 +88,7 @@ ruleTester.run("hierarchy-imports-between-layers", rule, {
    {
       filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.tsx',
       code: "import { AddNewComment } from '@/features/Article'",
-      errors: [{ message: "Одни слои могут использовать внутри себя только нижележащие слои"}],
+      errors: [{ messageId: "importNotFromAllowedLayer"}],
       options: options
    },
   ],

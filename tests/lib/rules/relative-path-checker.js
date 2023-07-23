@@ -32,12 +32,12 @@ ruleTester.run("relative-path-checker", rule, {
     {
 		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article',
       code: "import { AddNewComment } from 'entities/Article/AddNewComment/components/AddNewComment'",
-      errors: [{ message: "В рамках одного слайса пути должны быть относительными!"}],
+      errors: [{ messageId: "pathInSameSlice"}],
     },
     {
 		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article',
       code: "import { AddNewComment } from '@/entities/Article/AddNewComment/components/AddNewComment'",
-      errors: [{ message: "В рамках одного слайса пути должны быть относительными!"}],
+      errors: [{ messageId: "pathInSameSlice"}],
 		options: [
 			{
 				alias: '@'
