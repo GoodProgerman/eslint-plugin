@@ -1,6 +1,6 @@
 # eslint-plugin-fsd-paths-guard
 
-Eslint pligin for control imports&#39; paths according to architectural methodology &#34;Feature-sliced-design&#34;. 
+Eslint pligin for control imports paths according to architectural methodology Feature-sliced-design. 
 
 ## Installation
 
@@ -33,9 +33,28 @@ Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "fsd-paths-guard/rule-name": 2
-    }
+   "rules": {
+      "fsd-paths-guard/relative-path-checker": ["error", { alias: "@" }],
+      "fsd-paths-guard/public-api-imports": [
+         "error",
+         {
+            // Если вы используете алиасы
+            "alias": "@",
+            // Массив регулярных выражений. 
+            // Тестовые файлы, в которые данные будут импортроваться из Testing Public API.
+            "testFilesPatterns": ["**/*.test.*", "**/*.StoreDecorator.ts", "**/*.stories.ts"],
+         },
+      ],
+      "fsd-paths-guard/hierarchy-imports-between-layers": [
+         "error",
+         {
+            "alias": "@",
+            // Массив регулярных выражений. 
+            // Если импорт содержит одну из этих выражений, то правило игнорирует такой импорт.
+            "ignoreImportPatterns": ["**/StoreProvider", "**/testing"],
+         },
+      ],     
+   }
 }
 ```
 
@@ -43,6 +62,7 @@ Then configure the rules you want to use under the rules section.
 
 <!-- begin auto-generated rules list -->
 TODO: Run eslint-doc-generator to generate the rules list.
+Github - /
 <!-- end auto-generated rules list -->
 
 
