@@ -86,14 +86,14 @@ ruleTester.run("public-api-imports", rule, {
         code: "import { AddNewComment } from '@/entities/Article/testing'",
         errors: [{ messageId: "forbiddenToImportFromTestingPublicApi"}],
         options: options,
-        output: null
+        output: "import { AddNewComment } from '@/entities/Article'"
       },
       {
         filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\features\\Article/ArticleDetails.test.tsx',
         code: "import { AddNewComment } from '@/entities/Article'",
         errors: [{ messageId: "necessaryImportFromTestingPublicApi"}],
         options: options,
-        output: null
+        output: "import { AddNewComment } from '@/entities/Article/testing'"
       },
      ],
 });

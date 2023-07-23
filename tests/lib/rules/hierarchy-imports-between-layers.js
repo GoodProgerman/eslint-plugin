@@ -88,7 +88,7 @@ ruleTester.run("hierarchy-imports-between-layers", rule, {
    {
       filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/ArticleDetails.tsx',
       code: "import { AddNewComment } from '@/features/Article'",
-      errors: [{ messageId: "importNotFromAllowedLayer"}],
+      errors: [{ messageId: "necessaryImportFromAllowedLayer"}],
       options: options
    },
   ],

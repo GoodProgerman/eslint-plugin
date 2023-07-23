@@ -32,13 +32,13 @@ ruleTester.run("relative-path-checker", rule, {
     {
 		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/components/AddNewComment/AddNewComment.tsx',
       code: "import { articleSlice } from 'entities/Article/model/slice/articleSlice'",
-      errors: [{ messageId: "pathInSameSlice"}],
+      errors: [{ messageId: "necessaryRelativePathInSameSlice"}],
 		output: "import { articleSlice } from '../../model/slice/articleSlice'"
     },
     {
 		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/components/AddNewComment/AddNewComment.tsx',
       code: "import { articleSlice } from '@/entities/Article/model/slice/articleSlice'",
-      errors: [{ messageId: "pathInSameSlice"}],
+      errors: [{ messageId: "necessaryRelativePathInSameSlice"}],
 		output: "import { articleSlice } from '../../model/slice/articleSlice'",
 		options: [
 			{
@@ -49,7 +49,7 @@ ruleTester.run("relative-path-checker", rule, {
     {
 		filename: 'C:\\Users\\user\\Desktop\\javascript\\eslint-plugin\\src\\entities\\Article/components/AddNewComment/AddNewComment.tsx',
       code: "import { articleSlice } from '../../shared/Modal/Modal'",
-      errors: [{ messageId: "relativePathBetweenLayers"}],
+      errors: [{ messageId: "forbiddenRelativePathBetweenLayers"}],
 		output: null,
 		options: [
 			{
