@@ -73,6 +73,9 @@ Then configure the rules you want to use under the rules section.
 - hierarchy-imports-between-layers
 - no-relative-import-to-public-api
 
+---
+---
+
 ### Правило relative-path-checker
 
 Это правило гласит:
