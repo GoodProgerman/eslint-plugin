@@ -57,7 +57,7 @@ Then configure the rules you want to use under the rules section.
             "ignoreImportPatterns": ["**/StoreProvider", "**/testing"],
          },
       ],     
-		"fsd-paths-guard/no-relative-import-to-public-api": "error",
+      "fsd-paths-guard/no-relative-import-to-public-api": "error",
    }
 }
 ```
@@ -130,7 +130,7 @@ _Перед тем как идти дальше следует отметить,
 
 ---
 
-### Правило fsd-paths-guard/no-relative-import-to-public-api
+### Правило no-relative-import-to-public-api
 
 Это правило гласит:
 
