@@ -2,8 +2,8 @@
 
 Плагин для Eslint, который заставляет следовать архитектурной методологии _Feature-sliced-design_. 
 Если нарушить правила данного плагина, то `eslint`, будет выдавать ошибку с объянением того, что нарушено.
-Плагин поддерживает автоисправление.
-Перед тем, как идти дальше, следует хорошо ознакомиться с методологией - [Feature-sliced-design](https://feature-sliced.design/)
+Плагин также поддерживает автоисправление.
+Перед тем, как идти дальше, следует хорошо ознакомиться с архитектурной методологией - [Feature-sliced-design](https://feature-sliced.design/)
 
 ## Installation
 
@@ -65,6 +65,13 @@ Then configure the rules you want to use under the rules section.
 ---
 
 ## Правила
+
+Данный плагин содержит в себе 4 правила:
+
+- relative-path-checker
+- public-api-imports
+- hierarchy-imports-between-layers
+- no-relative-import-to-public-api
 
 ### Правило relative-path-checker
 
