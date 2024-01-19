@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-fsd-paths-guard",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "description": "Eslint pligin for control imports' paths according to architectural methodology \"Feature-sliced-design\". ",
   "keywords": [
     "eslint",
