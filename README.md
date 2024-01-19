@@ -57,6 +57,7 @@ Then configure the rules you want to use under the rules section.
             "ignoreImportPatterns": ["**/StoreProvider", "**/testing"],
          },
       ],     
+		"fsd-paths-guard/no-relative-import-to-public-api": "error",
    }
 }
 ```
@@ -126,3 +127,11 @@ _Перед тем как идти дальше следует отметить,
 При помощи этих паттернов мы описываем, в файлы с какими названиями можно будет 
 делать импорты из любых слоёв. То есть, это исключения для данного правила. 
 К сожалению, соответствовать данной архитектурной методологии на все 100% наврядли получится.
+
+---
+
+### Правило fsd-paths-guard/no-relative-import-to-public-api
+
+Это правило гласит:
+
+- Нельзя использовать относительные импорты к Public Api текущего слайса.
